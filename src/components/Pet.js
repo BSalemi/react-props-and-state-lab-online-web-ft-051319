@@ -2,14 +2,31 @@ import React from 'react'
 
 class Pet extends React.Component {
   constructor(props){
+    console.log(props, "pet prop")
     super(props)
   }
+
+  gender = () => {
+    if(this.props.gender === 'male') {
+      return '♂'
+    } else {
+      return '♀'
+    }
+  }
+
+  disableButton = () => {
+    if(this.props.isAdopted) {
+
+    }
+
+  }
+
   render() {
     return (
       <div className="card">
         <div className="content">
           <a className="header">
-            {this.props.gender}
+            {this.gender()}
             {this.props.name}
           </a>
           <div className="meta">
@@ -21,8 +38,15 @@ class Pet extends React.Component {
           </div>
         </div>
         <div className="extra content">
-          <button className="ui disabled button">Already adopted</button>
-          <button className="ui primary button">Adopt pet</button>
+        {this.props.isAdopted ? (
+            <button className="ui disabled button">Already adopted</button>
+          ) : (
+            <button
+              onClick={() => this.props.onAdoptPet(this.props.id)}
+              className="ui primary button">
+              Adopt pet
+            </button>
+          )}
         </div>
       </div>
     )
