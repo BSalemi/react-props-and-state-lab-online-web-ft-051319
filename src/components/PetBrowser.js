@@ -6,12 +6,11 @@ class PetBrowser extends React.Component {
   constructor(props){
     super(props)
   }
-
+/* <Pet name={pet.name} age={pet.age} type={pet.type} gender={pet.gender} weight={pet.weight} isAdopted={pet.isAdopted} onAdoptPet={this.props.onAdoptPet} id={pet.id}/>  */
   renderPets = () => {
     
     return this.props.pets.map(pet => {
-      return <Pet name={pet.name} age={pet.age} type={pet.type} gender={pet.gender} weight={pet.weight} isAdopted={pet.isAdopted} onAdoptPet={this.props.onAdoptPet} id={pet.id}/> 
-      
+      return <Pet pet={pet} key={pet.id} onAdoptPet={this.props.onAdoptPet} />
     })
   }
   render() {

@@ -40,6 +40,13 @@ class App extends React.Component {
     })
   }
 
+  onAdoptPet = petId => {
+    const pets = this.state.pets.map(p => {
+      return p.id === petId ? { ...p, isAdopted: true } : p;
+    });
+    this.setState({ pets });
+  };
+
   render() {
     return (
       <div className="ui container">
